@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+    <input type="text" id="title" placeholder="Type title here">
+    <input type="text" id="text" placeholder="Type post here">
+    <input type="file" id="image">
+    <button id="btn">Send</button>
+
+    <div id="posts">
+        {% for post in posts %}
+            <h2><a href="{{ url_for('show_post', id=post.id) }}">{{ post.title }}</a></h2>
+            <img src="{{post.image}}" width="100" height="111"><br>
+            <p></p>
+        {% endfor %}
+    </div>
+
+    <script src="/static/js/index.js"></script>
+</body>
+</html>

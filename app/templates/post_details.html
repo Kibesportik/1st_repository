@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="/static/js/comments.js"></script>
+</head>
+<body>
+    <h2>{{ post.title }}</h2>
+    <img src="{{ post.image }}" width="100" height="111">
+    <h4>{{ post.content }}</h4>
+    <div id="comments">
+        {% for c in comment %}
+            <p id="{{c.id}}">{{ c.id }}. {{ c.text }} <button class="btnDelete" data-url="{{ url_for('post_delete_comment', id=c.id) }}">Delete</button>
+            <button class="btnUpdate" data-url="{{ url_for('post_update_comment', id=c.id) }}" data-id="{{c.id}}">Change</button></p>
+        {% endfor %}
+    </div>
+        <input type="text" id="comment">
+        <button id="sendComment" data-url="{{ url_for('post_add_comment', id=post.id) }}">Send</button>
+</body>
+</html>
